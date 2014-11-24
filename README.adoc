@@ -16,3 +16,7 @@ environment.
 Simply run `make` and chmod the `git-wrapper` binary 4755 root:root.  Copy it
 into `/usr/local` or somewhere else suitable and invoke it instead of the normal
 git-http-backend binary.
+
+== License
+
+This script is in the public domain.
