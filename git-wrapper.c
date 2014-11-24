@@ -27,8 +27,10 @@ int main(int argc, char **argv)
 
 	/* Find the user's default group. */
 	pwd = getpwuid(uid);
-	gid = pwd->pw_gid;
+	if (!pwd)
+		return 1;
 
+	gid = pwd->pw_gid;
 	if (!gid)
 		return 1;
 
