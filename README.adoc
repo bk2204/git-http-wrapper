@@ -1,0 +1,18 @@
+This is a simple wrapper for Git smart HTTP servers where users have shell
+access.
+
+On such systems, CGI scripts (such as the Git HTTP server) will often run as the
+user, in order to be able to access user files and repositories, but the HTTP
+server may need to access authentication data (e.g. a Kerberos keytab) that
+regular users should not have access to.  This wrapper allows such systems to
+run as the user with a webserver-specific group and drop privileges to the
+user's default group before executing Git, which may in turn execute
+user-provided hook scripts.
+
+The script is designed to be extremely paranoid, although it does not sanitize
+the environment, as the web server is expected to provide a suitable
+environment.
+
+Simply run `make` and chmod the `git-wrapper` binary 4755 root:root.  Copy it
+into `/usr/local` or somewhere else suitable and invoke it instead of the normal
+git-http-backend binary.
