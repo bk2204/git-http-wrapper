@@ -21,7 +21,6 @@ int main(int argc, char **argv)
 	int ngroups;
 
 	uid = getuid();
-
 	if (!uid)
 		return 1;
 
@@ -32,6 +31,8 @@ int main(int argc, char **argv)
 
 	gid = pwd->pw_gid;
 	if (!gid)
+		return 1;
+	if (pwd->pw_uid != uid)
 		return 1;
 
 	/* Drop privileges. */
